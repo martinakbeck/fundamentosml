@@ -19,6 +19,10 @@ knn_classifier.fit(x_train, y_train)
 
 # Previsão das observações
 y_pred = knn_classifier.predict(x_train)
+
+#manual
+df_result['acertos'] = (df_result.loc[:, ['id_cliente', 'limite_adicional', 'classificacao']]
+                        .apply( lambda x: 1 if x['limite_adicional'] == x['classificacao'] else 0, axis=1))
 ```
 
 ### Linear Regression
