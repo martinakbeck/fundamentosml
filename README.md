@@ -45,3 +45,24 @@ y_pred = lr.model.predict (x_train)
 #manual
 np.sum(( x_train.loc[0,].values * lr_model.coef_)) + lr_model.intercept_
 ```
+
+## Aprendizado Não-Supervisionado
+
+### K-Means
+* Dividi o conjunto de dados em grupos (cluesters)
+
+```
+#definir o algoritmo
+kmeans = ct.KMeans(
+        n_clusters = n_clusters, #numero de clusters que achamos que tem
+        init = 'random', #como é o processo de inicialização
+        n_init = 10, #quantas vezes queremos que inicialize
+        random_state = 0, #inicilize eles sempre a partir da mesma origem aleatória
+        )
+
+# fit - training
+labels = kmeans.fit_predict(X)
+
+#perfomance (test)
+silhouette_avg = mt.silhouette_score(X, labels)
+```
